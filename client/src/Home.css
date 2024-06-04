@@ -1,0 +1,49 @@
+body {
+    background-color: #D1E8E2;
+    color: #0D1B2A;
+}
+
+.centered-form__header>h1 {
+    font-size: 40px;
+    color:#005249
+}
+
+.chat-icon>img {
+    width: 50%;
+    margin: -70px 25% -10px 25%;
+}
+
+.centered-form {
+    background: url("../img/pattern.png") repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-form__header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.centered-form__box {
+    box-shadow: 0px 0px 17px 1px #1d1f26;
+    background: #FFFFFF;
+    padding: 24px;
+    width: 250px;
+}
+
+.centered-form button {
+    width: 100%;
+    background-color: #005249;
+}
+
+.centered-form input {
+    margin-bottom: 16px;
+    width: 100%;
+    padding: 5px;
+    background-color: #D1E8E2;
+    color: #005249;
+}

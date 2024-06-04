@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.2"
+ruby "3.3.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.3"
@@ -46,3 +46,7 @@ group :development do
   # gem "spring"
 end
 
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "redis", "~> 5.2"

@@ -23,7 +23,7 @@ function Home() {
         e.preventDefault()
         if (username) {
             // Set the username in a cookie
-            const response = await fetch("http://localhost:3000/users", {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/messages`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

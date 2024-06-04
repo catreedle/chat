@@ -5,16 +5,13 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
-// const ws = new WebSocket("ws://localhost:3000/cable");
-
 function ChatRoom() {
     const [messages, setMessages] = useState([]);
     const [username, setUsername] = useState('')
     const [guid, setGuid] = useState("");
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const messagesContainer = document.getElementById("messages")
-
+    const messagesContainer = document.getElementById("messages");
 
 
     useEffect(() => {
@@ -22,7 +19,7 @@ function ChatRoom() {
     }, [])
 
     useEffect(() => {
-        const ws = new WebSocket("ws://localhost:3000/cable");
+        const ws = new WebSocket(`${import.meta.env.VITE_SOCKET_URL}/cable`);
 
         ws.onopen = () => {
             console.log("Connected to websocket server");
@@ -86,16 +83,8 @@ function ChatRoom() {
         e.preventDefault();
         const body = e.target.message.value;
 
-        // await fetch("http://localhost:3000/messages", {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify({ body, username })
-        // })
-
         try {
-            const response = await fetch('http://localhost:3000/messages', {
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/messages`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -117,7 +106,7 @@ function ChatRoom() {
     }
 
     const fetchMessages = async () => {
-        const response = await fetch("http://localhost:3000/messages")
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/messages`)
         const data = await response.json()
         setMessages(data)
         resetScroll()

@@ -56,5 +56,5 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-# Start the server
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+# CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]

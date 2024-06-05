@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import ChatRoom from './ChatRoom';
+import Home from './pages/Home/Home'
+import ChatRoom from './pages/ChatRoom/ChatRoom';
 
 const App = () => (
     <Router>

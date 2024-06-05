@@ -1,7 +1,11 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+message1:
+  body: "Test message"
+  user: testuser1
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
 
-one:
-  body: MyText
-
-two:
-  body: MyText
+message2:
+  body: "Another test message"
+  user: testuser2
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>

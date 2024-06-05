@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+testuser1:
+  username: "testuser1"
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
 
-one:
-  username: MyString
+testuser2:
+  username: "testuser2"
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
 
-two:
-  username: MyString

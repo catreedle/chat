@@ -2,7 +2,8 @@ require "test_helper"
 
 class MessagesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @message = messages(:one)
+    @message = messages(:message1)
+    @user = users(:testuser1)
   end
 
   test "should get index" do
@@ -12,7 +13,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create message" do
     assert_difference("Message.count") do
-      post messages_url, params: { message: { body: @message.body } }, as: :json
+      post messages_url, params: { body: @message.body, username: @user.username }, as: :json
     end
 
     assert_response :created

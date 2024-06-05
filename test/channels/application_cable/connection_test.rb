@@ -1,13 +1,15 @@
 require "test_helper"
 
-module ApplicationCable
-  class ConnectionTest < ActionCable::Connection::TestCase
-    # test "connects with cookies" do
-    #   cookies.signed[:user_id] = 42
-    #
-    #   connect
-    #
-    #   assert_equal connection.user_id, "42"
-    # end
+class ConnectionTest < ActionCable::Connection::TestCase
+  tests ApplicationCable::Connection # Specify the connection to test explicitly
+
+  test "connects successfully" do
+    # Simulate connection request
+    connect "/cable"
+
+    # Verify that the connection was established successfully
+    assert_not_nil connection
   end
+
+  # Add more tests as needed to cover your specific connection logic
 end

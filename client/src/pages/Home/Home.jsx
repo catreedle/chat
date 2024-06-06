@@ -1,8 +1,9 @@
-import './Home.css'
+import './Home.css';
 import icon from '/chat-icon.png'
 import Cookies from 'js-cookie';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ENVIRONMENT } from '../../constants';
 
 
 function Home() {
@@ -23,7 +24,7 @@ function Home() {
         e.preventDefault()
         if (username) {
             // Set the username in a cookie
-            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users`, {
+            const response = await fetch(`${ENVIRONMENT.VITE_BASE_URL}/users`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

@@ -15,8 +15,15 @@ function ChatRoom() {
 
 
     useEffect(() => {
-        fetchMessages()
-    }, [])
+        const fetchMessages = async () => {
+          const response = await fetch(`${import.meta.env.VITE_BASE_URL}/messages`);
+          const data = await response.json();
+          setMessages(data);
+          resetScroll();
+        };
+    
+        fetchMessages();
+      }, []);
 
     useEffect(() => {
         const ws = new WebSocket(`${import.meta.env.VITE_SOCKET_URL}/cable`);
@@ -39,12 +46,13 @@ function ChatRoom() {
         ws.onmessage = async (e) => {
             const data = JSON.parse(e.data);
             if (["ping", "welcome", "confirm_subscription"].includes(data.type)) return;
-
-            const message = data.message;
-            const fetchedMessages = await fetchMessages();
-            setMessages([...fetchedMessages, message]);
-            console.log(messages)
-            // resetScroll()
+            const message = data.message
+            setMessages((prevMessages) => {
+                if (prevMessages.some((msg) => msg.id === message.id)) {
+                  return prevMessages; // Avoid adding duplicates
+                }
+                return [...prevMessages, message];
+              });
         };
 
         ws.onclose = (event) => {
@@ -105,12 +113,6 @@ function ChatRoom() {
 
     }
 
-    const fetchMessages = async () => {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/messages`)
-        const data = await response.json()
-        setMessages(data)
-        resetScroll()
-    }
 
     const setMessagesAndScrollDown = (data) => {
         setMessages(data);
